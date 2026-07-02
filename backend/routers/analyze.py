@@ -58,4 +58,5 @@ def analyze_career(request: AnalyzeRequest):
 
     )
 
-mock_sources = [ { "title": "목업 데이터 — 테크스타트업A 데이터 분석가", "content": "요구 스킬: Python, SQL, 통계" } ] return AnalyzeResponse(answer=mock_answer, sources=mock_sources)
+    mock_sources = [ { "title": "목업 데이터 — 테크스타트업A 데이터 분석가", "content": "요구 스킬: Python, SQL, 통계" } ]
+    return AnalyzeResponse(answer=mock_answer, sources=mock_sources)
