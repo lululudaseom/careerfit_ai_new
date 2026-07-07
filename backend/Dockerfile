@@ -16,6 +16,7 @@ ENV PYTHONDONTWRITEBYTECODE=1
 # the application crashes without emitting any logs due to buffering.
 ENV PYTHONUNBUFFERED=1
 
+
 WORKDIR /app
 
 # Create a non-privileged user that the app will run under.
@@ -39,10 +40,11 @@ RUN --mount=type=cache,target=/root/.cache/pip \
     python -m pip install -r requirements.txt
 
 # Switch to the non-privileged user to run the application.
-USER appuser
-
-# Copy the source code into the container.
 COPY . .
+
+RUN mkdir -p /app/chroma_db && chown -R appuser:appuser /app
+
+USER appuser
 
 # Expose the port that the application listens on.
 EXPOSE 8000
